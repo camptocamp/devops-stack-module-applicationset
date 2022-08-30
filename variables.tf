@@ -6,10 +6,6 @@ variable "argocd_namespace" {
   type = string
 }
 
-variable "namespace" {
-  type = string
-}
-
 variable "extra_yaml" {
   type    = list(string)
   default = []
@@ -20,7 +16,7 @@ variable "extra_yaml" {
 #######################
 
 variable "name" {
-  description = "Project and application name"
+  description = "Project and application name where the ApplicationSet will reside"
   type        = string
 }
 
@@ -32,6 +28,12 @@ variable "generators" {
 variable "template" {
   description = "ApplicationSet template"
   type        = any
+}
+
+variable "project_dest_namespace" {
+  description = "Allowed destination namespace in the AppProject"
+  type        = string
+  default     = "*"
 }
 
 variable "project_source_repos" {

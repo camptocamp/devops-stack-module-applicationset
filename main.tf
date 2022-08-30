@@ -10,7 +10,7 @@ resource "argocd_project" "this" {
 
     destination {
       name      = "in-cluster"
-      namespace = var.namespace
+      namespace = var.project_dest_namespace
     }
 
     orphaned_resources {
