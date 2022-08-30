@@ -1,2 +1,3 @@
 # devops-stack-module-applicationset
-Generic ApplicationSet module for DevOps Stack
+
+A [DevOps Stack](https://devops-stack.io) module to deploy a generic ApplicationSet in Argo CD.
