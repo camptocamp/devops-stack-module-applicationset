@@ -6,11 +6,6 @@ variable "argocd_namespace" {
   type = string
 }
 
-variable "extra_yaml" {
-  type    = list(string)
-  default = []
-}
-
 #######################
 ## Module variables
 #######################

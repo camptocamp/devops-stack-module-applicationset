@@ -33,10 +33,6 @@ resource "argocd_project" "this" {
   }
 }
 
-data "utils_deep_merge_yaml" "values" {
-  input = local.all_yaml
-}
-
 resource "argocd_application" "this" {
   metadata {
     name      = var.name
@@ -51,8 +47,6 @@ resource "argocd_application" "this" {
       path            = "charts/applicationset"
       target_revision = "main"
       helm {
-        values = data.utils_deep_merge_yaml.values.output
-
         parameter {
           name  = "template"
           value = yamlencode(var.template)
