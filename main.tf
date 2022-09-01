@@ -39,6 +39,13 @@ resource "argocd_application" "this" {
     namespace = var.argocd_namespace
   }
 
+  timeouts {
+    create = "15m"
+    delete = "15m"
+  }
+
+  wait = true
+
   spec {
     project = argocd_project.this.metadata.0.name
 
@@ -74,6 +81,14 @@ resource "argocd_application" "this" {
         allow_empty = false
         prune       = true
         self_heal   = true
+      }
+
+      retry {
+        backoff = {
+          duration     = ""
+          max_duration = ""
+        }
+        limit = "0"
       }
 
       sync_options = [
