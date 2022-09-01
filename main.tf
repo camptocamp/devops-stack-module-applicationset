@@ -13,6 +13,15 @@ resource "argocd_project" "this" {
       namespace = var.project_dest_namespace
     }
 
+    # This destination block is needed in order to allow the ApplicationSet 
+    # below to be created in the namespace argocd while belonging to this 
+    # project. This block is only needed if the user provides a namespace above
+    # instead of the wildcard "*" configured by default.
+    destination {
+      name = "in-cluster"
+      namespace = "argocd"
+    }
+
     orphaned_resources {
       warn = true
     }
@@ -35,7 +44,7 @@ resource "argocd_application" "this" {
   }
 
   spec {
-    project = "default"
+    project = argocd_project.this.metadata.0.name
 
     source {
       repo_url        = "https://github.com/camptocamp/devops-stack-module-applicationset.git"
