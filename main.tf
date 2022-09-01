@@ -103,3 +103,9 @@ resource "argocd_application" "this" {
     }
   }
 }
+
+resource "null_resource" "this" {
+  depends_on = [
+    resource.argocd_application.this,
+  ]
+}
