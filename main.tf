@@ -6,7 +6,13 @@ resource "argocd_project" "this" {
 
   spec {
     description  = "${var.name} application project"
-    source_repos = var.project_source_repos
+
+    # Concatenate the ApplicationSet repository with the allowed repositories
+    # in order to allow the ApplicationSet to be created in this project.
+    source_repos = concat(
+      var.project_source_repos,
+      ["https://github.com/camptocamp/devops-stack-module-applicationset.git"]
+      )
 
     destination {
       name      = "in-cluster"
