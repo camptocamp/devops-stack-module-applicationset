@@ -60,6 +60,8 @@ resource "argocd_application" "this" {
       path            = "charts/applicationset"
       target_revision = "main"
       helm {
+        values_files = ["values.yaml"]
+        
         parameter {
           name  = "template"
           value = yamlencode(var.template)
