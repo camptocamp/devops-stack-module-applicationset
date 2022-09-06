@@ -61,7 +61,7 @@ resource "argocd_application" "this" {
       target_revision = "main"
       helm {
         values_files = ["values.yaml"]
-        
+
         parameter {
           name  = "template"
           value = yamlencode(var.template)
