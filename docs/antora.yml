@@ -1,5 +1,6 @@
 ---
-name: "ApplicationSet Module"
+name: "applicationset"
+title: "ApplicationSet Module"
 version: true
 start_page: README.adoc
 nav:
