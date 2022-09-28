@@ -1,3 +1,24 @@
 = devops-stack-module-applicationset
 
 A https://devops-stack.io[DevOps Stack] module to deploy a generic ApplicationSet in Argo CD.
+
+
+== Technical Reference
+
+=== Dependencies
+
+==== `module.argocd`
+
+As this is an application, it needs to be deployed after the deployment of Argo CD and consequently this module needs to have this explicit dependency.
+
+// BEGIN_TF_DOCS
+// END_TF_DOCS
+
+=== Reference in table format 
+
+.Show tables
+[%collapsible]
+====
+// BEGIN_TF_TABLES
+// END_TF_TABLES
+====
