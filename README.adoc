@@ -12,6 +12,91 @@ A https://devops-stack.io[DevOps Stack] module to deploy a generic ApplicationSe
 As this is an application, it needs to be deployed after the deployment of Argo CD and consequently this module needs to have this explicit dependency.
 
 // BEGIN_TF_DOCS
+=== Requirements
+
+No requirements.
+
+=== Providers
+
+The following providers are used by this module:
+
+- [[provider_argocd]] <<provider_argocd,argocd>>
+
+- [[provider_null]] <<provider_null,null>>
+
+=== Modules
+
+No modules.
+
+=== Resources
+
+The following resources are used by this module:
+
+- https://registry.terraform.io/providers/oboukili/argocd/latest/docs/resources/application[argocd_application.this] (resource)
+- https://registry.terraform.io/providers/oboukili/argocd/latest/docs/resources/project[argocd_project.this] (resource)
+- https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.this] (resource)
+
+=== Required Inputs
+
+The following input variables are required:
+
+==== [[input_argocd_namespace]] <<input_argocd_namespace,argocd_namespace>>
+
+Description: n/a
+
+Type: `string`
+
+==== [[input_generators]] <<input_generators,generators>>
+
+Description: ApplicationSet generators
+
+Type: `any`
+
+==== [[input_name]] <<input_name,name>>
+
+Description: Project and application name where the ApplicationSet will reside
+
+Type: `string`
+
+==== [[input_template]] <<input_template,template>>
+
+Description: ApplicationSet template
+
+Type: `any`
+
+=== Optional Inputs
+
+The following input variables are optional (have default values):
+
+==== [[input_project_dest_namespace]] <<input_project_dest_namespace,project_dest_namespace>>
+
+Description: Allowed destination namespace in the AppProject
+
+Type: `string`
+
+Default: `"*"`
+
+==== [[input_project_source_repos]] <<input_project_source_repos,project_source_repos>>
+
+Description: Allowed repositories in the AppProject
+
+Type: `list(string)`
+
+Default:
+[source,json]
+----
+[
+  "*"
+]
+----
+
+=== Outputs
+
+The following outputs are exported:
+
+==== [[output_id]] <<output_id,id>>
+
+Description: n/a
 // END_TF_DOCS
 
 === Reference in table format 
@@ -20,5 +105,84 @@ As this is an application, it needs to be deployed after the deployment of Argo 
 [%collapsible]
 ====
 // BEGIN_TF_TABLES
+
+
+= Providers
+
+[cols="a,a",options="header,autowidth"]
+|===
+|Name |Version
+|[[provider_argocd]] <<provider_argocd,argocd>> |n/a
+|[[provider_null]] <<provider_null,null>> |n/a
+|===
+
+= Resources
+
+[cols="a,a",options="header,autowidth"]
+|===
+|Name |Type
+|https://registry.terraform.io/providers/oboukili/argocd/latest/docs/resources/application[argocd_application.this] |resource
+|https://registry.terraform.io/providers/oboukili/argocd/latest/docs/resources/project[argocd_project.this] |resource
+|https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.this] |resource
+|===
+
+= Inputs
+
+[cols="a,a,a,a,a",options="header,autowidth"]
+|===
+|Name |Description |Type |Default |Required
+|[[input_argocd_namespace]] <<input_argocd_namespace,argocd_namespace>>
+|n/a
+|`string`
+|n/a
+|yes
+
+|[[input_generators]] <<input_generators,generators>>
+|ApplicationSet generators
+|`any`
+|n/a
+|yes
+
+|[[input_name]] <<input_name,name>>
+|Project and application name where the ApplicationSet will reside
+|`string`
+|n/a
+|yes
+
+|[[input_project_dest_namespace]] <<input_project_dest_namespace,project_dest_namespace>>
+|Allowed destination namespace in the AppProject
+|`string`
+|`"*"`
+|no
+
+|[[input_project_source_repos]] <<input_project_source_repos,project_source_repos>>
+|Allowed repositories in the AppProject
+|`list(string)`
+|
+
+[source]
+----
+[
+  "*"
+]
+----
+
+|no
+
+|[[input_template]] <<input_template,template>>
+|ApplicationSet template
+|`any`
+|n/a
+|yes
+
+|===
+
+= Outputs
+
+[cols="a,a",options="header,autowidth"]
+|===
+|Name |Description
+|[[output_id]] <<output_id,id>> |n/a
+|===
 // END_TF_TABLES
 ====
