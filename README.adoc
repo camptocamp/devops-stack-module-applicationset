@@ -42,25 +42,25 @@ The following input variables are required:
 
 ==== [[input_argocd_namespace]] <<input_argocd_namespace,argocd_namespace>>
 
-Description: n/a
+Description: Namespace used by Argo CD where the Application and AppProject resources should be created.
 
 Type: `string`
 
 ==== [[input_generators]] <<input_generators,generators>>
 
-Description: ApplicationSet generators
+Description: ApplicationSet generators.
 
 Type: `any`
 
 ==== [[input_name]] <<input_name,name>>
 
-Description: Project and application name where the ApplicationSet will reside
+Description: Name to give the AppProject and ApplicationSet (tecnically there is also an Application where the ApplicationSet will reside that will get the same name).
 
 Type: `string`
 
 ==== [[input_template]] <<input_template,template>>
 
-Description: ApplicationSet template
+Description: ApplicationSet template.
 
 Type: `any`
 
@@ -70,7 +70,7 @@ The following input variables are optional (have default values):
 
 ==== [[input_project_dest_namespace]] <<input_project_dest_namespace,project_dest_namespace>>
 
-Description: Allowed destination namespace in the AppProject
+Description: Allowed destination namespace in the AppProject.
 
 Type: `string`
 
@@ -78,7 +78,7 @@ Default: `"*"`
 
 ==== [[input_project_source_repos]] <<input_project_source_repos,project_source_repos>>
 
-Description: Allowed repositories in the AppProject
+Description: List of repositories allowed to be scraped in this AppProject.
 
 Type: `list(string)`
 
@@ -96,7 +96,7 @@ The following outputs are exported:
 
 ==== [[output_id]] <<output_id,id>>
 
-Description: n/a
+Description: ID to pass other modules in order to refer to this module as a dependency.
 // END_TF_DOCS
 
 === Reference in table format 
@@ -132,31 +132,31 @@ Description: n/a
 |===
 |Name |Description |Type |Default |Required
 |[[input_argocd_namespace]] <<input_argocd_namespace,argocd_namespace>>
-|n/a
+|Namespace used by Argo CD where the Application and AppProject resources should be created.
 |`string`
 |n/a
 |yes
 
 |[[input_generators]] <<input_generators,generators>>
-|ApplicationSet generators
+|ApplicationSet generators.
 |`any`
 |n/a
 |yes
 
 |[[input_name]] <<input_name,name>>
-|Project and application name where the ApplicationSet will reside
+|Name to give the AppProject and ApplicationSet (tecnically there is also an Application where the ApplicationSet will reside that will get the same name).
 |`string`
 |n/a
 |yes
 
 |[[input_project_dest_namespace]] <<input_project_dest_namespace,project_dest_namespace>>
-|Allowed destination namespace in the AppProject
+|Allowed destination namespace in the AppProject.
 |`string`
 |`"*"`
 |no
 
 |[[input_project_source_repos]] <<input_project_source_repos,project_source_repos>>
-|Allowed repositories in the AppProject
+|List of repositories allowed to be scraped in this AppProject.
 |`list(string)`
 |
 
@@ -170,7 +170,7 @@ Description: n/a
 |no
 
 |[[input_template]] <<input_template,template>>
-|ApplicationSet template
+|ApplicationSet template.
 |`any`
 |n/a
 |yes
@@ -182,7 +182,7 @@ Description: n/a
 [cols="a,a",options="header,autowidth"]
 |===
 |Name |Description
-|[[output_id]] <<output_id,id>> |n/a
+|[[output_id]] <<output_id,id>> |ID to pass other modules in order to refer to this module as a dependency.
 |===
 // END_TF_TABLES
 ====
