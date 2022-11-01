@@ -32,8 +32,9 @@ variable "project_dest_namespace" {
   default     = "*"
 }
 
-variable "project_source_repos" {
-  description = "List of repositories allowed to be scraped in this AppProject."
-  type        = list(string)
-  default     = ["*"]
+variable "project_source_repo" {
+  description = "Repository allowed to be scraped in this AppProject."
+  type        = string
+  default     = "*"
+}
 }
