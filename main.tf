@@ -128,7 +128,6 @@ resource "argocd_application" "this" {
   depends_on = [
     resource.null_resource.dependencies,
   ]
-
 }
 
 resource "null_resource" "this" {
