@@ -7,6 +7,13 @@ variable "argocd_namespace" {
   type        = string
 }
 
+
+variable "dependency_ids" {
+  description = "IDs of the other modules on which this module depends on."
+  type        = map(string)
+  default     = {}
+}
+
 #######################
 ## Module variables
 #######################
