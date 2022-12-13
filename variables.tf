@@ -7,6 +7,19 @@ variable "argocd_namespace" {
   type        = string
 }
 
+variable "app_autosync" {
+  description = "Autosync option configuration for argocd application"
+  type = object({
+    allow_empty = optional(bool)
+    prune       = optional(bool)
+    self_heal   = optional(bool)
+  })
+  default = {
+    allow_empty = false
+    prune       = true
+    self_heal   = true
+  }
+}
 
 variable "dependency_ids" {
   description = "IDs of the other modules on which this module depends on."
