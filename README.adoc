@@ -16,7 +16,7 @@ module "helloworld_apps" {
   name                   = "helloworld-apps"
   argocd_namespace       = local.argocd_namespace
   project_dest_namespace = "*"
-  project_source_repos = "https://github.com/camptocamp/devops-stack-helloworld-templates.git"
+  project_source_repo    = "https://github.com/camptocamp/devops-stack-helloworld-templates.git"
 
   generators = [
     {
@@ -112,7 +112,7 @@ module "helloworld_apps" {
   name                   = "helloworld-apps"
   argocd_namespace       = local.argocd_namespace
   project_dest_namespace = "*"
-  project_source_repos = "git@github.com:camptocamp/devops-stack-helloworld-templates.git"
+  project_source_repo    = "git@github.com:camptocamp/devops-stack-helloworld-templates.git"
 
   source_credentials_ssh_key = "-----BEGIN OPENSSH PRIVATE KEY-----\nfoo\nbar\n-----END OPENSSH PRIVATE KEY-----"
 
@@ -165,7 +165,7 @@ module "helloworld_apps" {
   name                   = "helloworld-apps"
   argocd_namespace       = local.argocd_namespace
   project_dest_namespace = "*"
-  project_source_repos = "https://github.com/camptocamp/devops-stack-helloworld-templates.git"
+  project_source_repo    = "https://github.com/camptocamp/devops-stack-helloworld-templates.git"
 
   source_credentials_https = {
     username = "your_username"
