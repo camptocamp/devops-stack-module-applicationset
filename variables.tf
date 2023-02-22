@@ -11,6 +11,25 @@ variable "target_revision" {
   description = "Override of target revision of the application chart."
   type        = string
   default     = "v1.2.0" # x-release-please-version
+
+variable "app_autosync" {
+  description = "Automated sync options for the Argo CD Application resource."
+  type = object({
+    allow_empty = optional(bool)
+    prune       = optional(bool)
+    self_heal   = optional(bool)
+  })
+  default = {
+    allow_empty = false
+    prune       = true
+    self_heal   = true
+  }
+}
+
+variable "dependency_ids" {
+  description = "IDs of the other modules on which this module depends on."
+  type        = map(string)
+  default     = {}
 }
 
 #######################
