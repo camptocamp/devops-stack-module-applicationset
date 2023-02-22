@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v1.2.0...v1.2.1) (2023-02-22)
+
+
+### Bug Fixes
+
+* **argocd:** let user choose a specific module version ([#12](https://github.com/camptocamp/devops-stack-module-applicationset/issues/12)) ([5025839](https://github.com/camptocamp/devops-stack-module-applicationset/commit/5025839a3a19f752c08423c837e8cbba80ca55cf))
+
 ## [1.2.0](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v1.1.1...v1.2.0) (2023-01-30)
 
 
