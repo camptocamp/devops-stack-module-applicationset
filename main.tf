@@ -82,7 +82,7 @@ resource "argocd_application" "this" {
     source {
       repo_url        = "https://github.com/camptocamp/devops-stack-module-applicationset.git"
       path            = "charts/applicationset"
-      target_revision = "main"
+      target_revision = var.target_revision
       helm {
         value_files = ["values.yaml"]
 
