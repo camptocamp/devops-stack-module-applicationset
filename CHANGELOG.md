@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.2](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v1.2.1...v1.2.2) (2023-02-28)
+
+
+### Bug Fixes
+
+* add bracket to unclosed variable block ([a497e45](https://github.com/camptocamp/devops-stack-module-applicationset/commit/a497e45cc165b65bf9023410f4f20e69305a6d38))
+* add loose version constraints to the required providers ([3a311a4](https://github.com/camptocamp/devops-stack-module-applicationset/commit/3a311a424cc45e23eb07de7656193ae8b81466e6))
+* use comparison with null instead of can() ([a986e46](https://github.com/camptocamp/devops-stack-module-applicationset/commit/a986e4655e5fa177e32c5e217c172451dac5eec8))
+
 ## [1.2.1](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v1.2.0...v1.2.1) (2023-02-22)
 
 
