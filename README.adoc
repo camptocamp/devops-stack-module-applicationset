@@ -82,11 +82,11 @@ This module first creates an Argo CD AppProject called `helloworld-apps` that wi
 
 Then, it creates an Application called `helloworld-apps` that itself only contains an homonymous ApplicationSet, which is created from the chart inside this repository and using the variables given on the instantiation (`name`, `generators`, and `template`).
 
-image::./images/argocd_appset.png[]
+image::argocd_appset.png[]
 
 It is this ApplicationSet that will contain all the applications you have in the repository you defined in `repoURL`, in this example is `helloworld`.
 
-image::./images/argocd_app.png[]
+image::argocd_app.png[]
 
 As you can see, the ApplicationSet template we give here is flexible enough that it can be configured as you like. For example, since we defined the path in the generator as a wildcard `apps/*`, we can also take this value to then name each application created depending on name of the folder where the chart is located.
 
