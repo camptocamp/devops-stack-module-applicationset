@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v1.2.3...v1.2.4) (2023-03-31)
+
+
+### Documentation
+
+* fix images on the README.adoc ([e9f53d7](https://github.com/camptocamp/devops-stack-module-applicationset/commit/e9f53d76f1a3c863399e7ca7afac23c97bcbe90b))
+
 ## [1.2.3](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v1.2.2...v1.2.3) (2023-03-08)
 
 
