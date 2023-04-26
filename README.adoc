@@ -252,17 +252,17 @@ Description: Namespace used by Argo CD where the Application and AppProject reso
 
 Type: `string`
 
-==== [[input_generators]] <<input_generators,generators>>
-
-Description: ApplicationSet generators.
-
-Type: `any`
-
 ==== [[input_name]] <<input_name,name>>
 
 Description: Name to give the AppProject and ApplicationSet (tecnically there is also an Application where the ApplicationSet will reside that will get the same name).
 
 Type: `string`
+
+==== [[input_generators]] <<input_generators,generators>>
+
+Description: ApplicationSet generators.
+
+Type: `any`
 
 ==== [[input_template]] <<input_template,template>>
 
@@ -273,6 +273,14 @@ Type: `any`
 === Optional Inputs
 
 The following input variables are optional (have default values):
+
+==== [[input_target_revision]] <<input_target_revision,target_revision>>
+
+Description: Override of target revision of the application chart.
+
+Type: `string`
+
+Default: `"v1.2.4"`
 
 ==== [[input_app_autosync]] <<input_app_autosync,app_autosync>>
 
@@ -354,14 +362,6 @@ Type: `string`
 
 Default: `null`
 
-==== [[input_target_revision]] <<input_target_revision,target_revision>>
-
-Description: Override of target revision of the application chart.
-
-Type: `string`
-
-Default: `"v1.2.3"`
-
 === Outputs
 
 The following outputs are exported:
@@ -413,6 +413,18 @@ Description: ID to pass other modules in order to refer to this module as a depe
 [cols="a,a,a,a,a",options="header,autowidth"]
 |===
 |Name |Description |Type |Default |Required
+|[[input_argocd_namespace]] <<input_argocd_namespace,argocd_namespace>>
+|Namespace used by Argo CD where the Application and AppProject resources should be created.
+|`string`
+|n/a
+|yes
+
+|[[input_target_revision]] <<input_target_revision,target_revision>>
+|Override of target revision of the application chart.
+|`string`
+|`"v1.2.4"`
+|no
+
 |[[input_app_autosync]] <<input_app_autosync,app_autosync>>
 |Automated sync options for the Argo CD Application resource.
 |
@@ -439,17 +451,17 @@ object({
 
 |no
 
-|[[input_argocd_namespace]] <<input_argocd_namespace,argocd_namespace>>
-|Namespace used by Argo CD where the Application and AppProject resources should be created.
-|`string`
-|n/a
-|yes
-
 |[[input_dependency_ids]] <<input_dependency_ids,dependency_ids>>
 |IDs of the other modules on which this module depends on.
 |`map(string)`
 |`{}`
 |no
+
+|[[input_name]] <<input_name,name>>
+|Name to give the AppProject and ApplicationSet (tecnically there is also an Application where the ApplicationSet will reside that will get the same name).
+|`string`
+|n/a
+|yes
 
 |[[input_generators]] <<input_generators,generators>>
 |ApplicationSet generators.
@@ -457,9 +469,9 @@ object({
 |n/a
 |yes
 
-|[[input_name]] <<input_name,name>>
-|Name to give the AppProject and ApplicationSet (tecnically there is also an Application where the ApplicationSet will reside that will get the same name).
-|`string`
+|[[input_template]] <<input_template,template>>
+|ApplicationSet template.
+|`any`
 |n/a
 |yes
 
@@ -506,18 +518,6 @@ object({
 |`string`
 |`null`
 |no
-
-|[[input_target_revision]] <<input_target_revision,target_revision>>
-|Override of target revision of the application chart.
-|`string`
-|`"v1.2.3"`
-|no
-
-|[[input_template]] <<input_template,template>>
-|ApplicationSet template.
-|`any`
-|n/a
-|yes
 
 |===
 
