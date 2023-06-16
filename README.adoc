@@ -82,11 +82,11 @@ This module first creates an Argo CD AppProject called `helloworld-apps` that wi
 
 Then, it creates an Application called `helloworld-apps` that itself only contains an homonymous ApplicationSet, which is created from the chart inside this repository and using the variables given on the instantiation (`name`, `generators`, and `template`).
 
-image::argocd_appset.png[]
+image::argocd_appset.png[link=https://raw.githubusercontent.com/camptocamp/devops-stack-module-applicationset/main/docs/modules/ROOT/assets/images/argocd_appset.png,window=_blank]
 
 It is this ApplicationSet that will contain all the applications you have in the repository you defined in `repoURL`, in this example is `helloworld`.
 
-image::argocd_app.png[]
+image::argocd_app.png[link=https://raw.githubusercontent.com/camptocamp/devops-stack-module-applicationset/main/docs/modules/ROOT/assets/images/argocd_app.png,window=_blank]
 
 As you can see, the ApplicationSet template we give here is flexible enough that it can be configured as you like. For example, since we defined the path in the generator as a wildcard `apps/*`, we can also take this value to then name each application created depending on name of the folder where the chart is located.
 
@@ -284,7 +284,7 @@ Description: Override of target revision of the application chart.
 
 Type: `string`
 
-Default: `"v1.2.4"`
+Default: `"v1.2.5"`
 
 ==== [[input_app_autosync]] <<input_app_autosync,app_autosync>>
 
@@ -427,7 +427,7 @@ Description: ID to pass other modules in order to refer to this module as a depe
 |[[input_target_revision]] <<input_target_revision,target_revision>>
 |Override of target revision of the application chart.
 |`string`
-|`"v1.2.4"`
+|`"v1.2.5"`
 |no
 
 |[[input_app_autosync]] <<input_app_autosync,app_autosync>>
