@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.6](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v1.2.5...v1.2.6) (2023-06-16)
+
+
+### Documentation
+
+* add link to images to better visualize them ([#24](https://github.com/camptocamp/devops-stack-module-applicationset/issues/24)) ([37f30e1](https://github.com/camptocamp/devops-stack-module-applicationset/commit/37f30e10c07f1995e57212bd1885a87ba43a4e2f))
+
 ## [1.2.5](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v1.2.4...v1.2.5) (2023-05-30)
 
 
