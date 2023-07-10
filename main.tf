@@ -3,7 +3,7 @@ resource "null_resource" "dependencies" {
 }
 
 resource "argocd_repository" "private_https_repo" {
-  # This count here is nothing more than a way to conditionally deploy this resource. Although there is no loop inside 
+  # This count here is nothing more than a way to conditionally deploy this resource. Although there is no loop inside
   # the resource, if the condition is true, the resource is deployed because there is exactly one iteration.
   count = (var.source_credentials_https.password != null && startswith(var.project_source_repo, "https://")) ? 1 : 0
 
@@ -14,7 +14,7 @@ resource "argocd_repository" "private_https_repo" {
 }
 
 resource "argocd_repository" "private_ssh_repo" {
-  # This count here is nothing more than a way to conditionally deploy this resource. Although there is no loop inside 
+  # This count here is nothing more than a way to conditionally deploy this resource. Although there is no loop inside
   # the resource, if the condition is true, the resource is deployed because there is exactly one iteration.
   count = (var.source_credentials_ssh_key != null && startswith(var.project_source_repo, "git@")) ? 1 : 0
 
@@ -32,7 +32,7 @@ resource "argocd_project" "this" {
   spec {
     description = "${var.name} application project"
 
-    # Concatenate the ApplicationSet repository with the allowed repositories in order to allow the ApplicationSet 
+    # Concatenate the ApplicationSet repository with the allowed repositories in order to allow the ApplicationSet
     # to be created in this project.
     source_repos = concat(
       [var.project_source_repo],
@@ -44,7 +44,7 @@ resource "argocd_project" "this" {
       namespace = var.project_dest_namespace
     }
 
-    # This destination block is needed in order to allow the ApplicationSet below to be created in the namespace 
+    # This destination block is needed in order to allow the ApplicationSet below to be created in the namespace
     # `argocd` while belonging to this project. This block is only needed if the user provides a namespace above
     # instead of the wildcard "*" configured by default.
     destination {
@@ -109,14 +109,19 @@ resource "argocd_application" "this" {
     }
 
     sync_policy {
-      automated = var.app_autosync
+      automated {
+        prune       = var.app_autosync.prune
+        self_heal   = var.app_autosync.self_heal
+        allow_empty = var.app_autosync.allow_empty
+      }
 
       retry {
-        backoff = {
-          duration     = ""
-          max_duration = ""
+        backoff {
+          duration     = "20s"
+          max_duration = "2m"
+          factor       = "2"
         }
-        limit = "0"
+        limit = "5"
       }
 
       sync_options = [
