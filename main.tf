@@ -39,7 +39,7 @@ resource "argocd_project" "this" {
       ["https://github.com/camptocamp/devops-stack-module-applicationset.git"]
     )
 
-    destination {
+    destination { # TODO Variabilize these values
       name      = "in-cluster"
       namespace = var.project_dest_namespace
     }
@@ -47,9 +47,9 @@ resource "argocd_project" "this" {
     # This destination block is needed in order to allow the ApplicationSet below to be created in the namespace
     # `argocd` while belonging to this project. This block is only needed if the user provides a namespace above
     # instead of the wildcard "*" configured by default.
-    destination {
+    destination { # TODO Variabilize these values
       name      = "in-cluster"
-      namespace = "argocd"
+      namespace = var.argocd_namespace
     }
 
     orphaned_resources {
@@ -103,16 +103,19 @@ resource "argocd_application" "this" {
       }
     }
 
-    destination {
+    destination { # TODO Variabilize these values
       name      = "in-cluster"
       namespace = var.argocd_namespace
     }
 
     sync_policy {
-      automated {
-        prune       = var.app_autosync.prune
-        self_heal   = var.app_autosync.self_heal
-        allow_empty = var.app_autosync.allow_empty
+      dynamic "automated" {
+        for_each = toset(var.app_autosync == { "allow_empty" = tobool(null), "prune" = tobool(null), "self_heal" = tobool(null) } ? [] : [var.app_autosync])
+        content {
+          prune       = automated.value.prune
+          self_heal   = automated.value.self_heal
+          allow_empty = automated.value.allow_empty
+        }
       }
 
       retry {
