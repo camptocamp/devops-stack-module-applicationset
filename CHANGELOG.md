@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v2.0.0...v2.0.1) (2023-08-09)
+
+
+### Bug Fixes
+
+* readd support to deactivate auto-sync which was broken by [#26](https://github.com/camptocamp/devops-stack-module-applicationset/issues/26) ([#28](https://github.com/camptocamp/devops-stack-module-applicationset/issues/28)) ([594b09d](https://github.com/camptocamp/devops-stack-module-applicationset/commit/594b09dddd73cbfb49ed19ab9cea8e72914c63cf))
+
 ## [2.0.0](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v1.2.6...v2.0.0) (2023-07-11)
 
 
