@@ -284,7 +284,7 @@ Description: Override of target revision of the application chart.
 
 Type: `string`
 
-Default: `"v1.2.6"`
+Default: `"v2.0.0"`
 
 ==== [[input_app_autosync]] <<input_app_autosync,app_autosync>>
 
@@ -396,8 +396,8 @@ Description: ID to pass other modules in order to refer to this module as a depe
 [cols="a,a",options="header,autowidth"]
 |===
 |Name |Version
-|[[provider_argocd]] <<provider_argocd,argocd>> |>= 5
 |[[provider_null]] <<provider_null,null>> |>= 3
+|[[provider_argocd]] <<provider_argocd,argocd>> |>= 5
 |===
 
 = Resources
@@ -427,7 +427,7 @@ Description: ID to pass other modules in order to refer to this module as a depe
 |[[input_target_revision]] <<input_target_revision,target_revision>>
 |Override of target revision of the application chart.
 |`string`
-|`"v1.2.6"`
+|`"v2.0.0"`
 |no
 
 |[[input_app_autosync]] <<input_app_autosync,app_autosync>>
