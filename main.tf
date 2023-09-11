@@ -3,9 +3,7 @@ resource "null_resource" "dependencies" {
 }
 
 resource "argocd_repository" "private_https_repo" {
-  # This count here is nothing more than a way to conditionally deploy this resource. Although there is no loop inside
-  # the resource, if the condition is true, the resource is deployed because there is exactly one iteration.
-  count = (var.source_credentials_https.password != null && startswith(var.project_source_repo, "https://")) ? 1 : 0
+  count = (var.source_credentials_https != null && startswith(var.project_source_repo, "https://")) ? 1 : 0
 
   repo     = var.project_source_repo
   username = var.source_credentials_https.username
@@ -14,8 +12,6 @@ resource "argocd_repository" "private_https_repo" {
 }
 
 resource "argocd_repository" "private_ssh_repo" {
-  # This count here is nothing more than a way to conditionally deploy this resource. Although there is no loop inside
-  # the resource, if the condition is true, the resource is deployed because there is exactly one iteration.
   count = (var.source_credentials_ssh_key != null && startswith(var.project_source_repo, "git@")) ? 1 : 0
 
   repo            = var.project_source_repo
@@ -47,7 +43,7 @@ resource "argocd_project" "this" {
     # This destination block is needed in order to allow the ApplicationSet below to be created in the namespace
     # `argocd` while belonging to this project. This block is only needed if the user provides a namespace above
     # instead of the wildcard "*" configured by default.
-    destination { # TODO Variabilize these values
+    destination {
       name      = "in-cluster"
       namespace = var.argocd_namespace
     }
