@@ -35,16 +35,20 @@ resource "argocd_project" "this" {
       ["https://github.com/camptocamp/devops-stack-module-applicationset.git"]
     )
 
-    destination { # TODO Variabilize these values
-      name      = "in-cluster"
+    # The destination block does not support having both `name` and `server` defined at the same time. For that reason,
+    # we added the ternary operator below to test if the user provided a `project_dest_cluster_address` variable.
+    destination {
+      name      = var.project_dest_cluster_address == null ? var.project_dest_cluster_name : null
+      server    = var.project_dest_cluster_address == null ? null : var.project_dest_cluster_address
       namespace = var.project_dest_namespace
     }
 
-    # This destination block is needed in order to allow the ApplicationSet below to be created in the namespace
+    # The destination block below is needed in order to allow the ApplicationSet below to be created in the namespace
     # `argocd` while belonging to this project. This block is only needed if the user provides a namespace above
     # instead of the wildcard "*" configured by default.
     destination {
-      name      = "in-cluster"
+      name      = var.project_dest_cluster_address == null ? var.project_dest_cluster_name : null
+      server    = var.project_dest_cluster_address == null ? null : var.project_dest_cluster_address
       namespace = var.argocd_namespace
     }
 
@@ -99,8 +103,9 @@ resource "argocd_application" "this" {
       }
     }
 
-    destination { # TODO Variabilize these values
-      name      = "in-cluster"
+    destination {
+      name      = var.project_dest_cluster_address == null ? var.project_dest_cluster_name : null
+      server    = var.project_dest_cluster_address == null ? null : var.project_dest_cluster_address
       namespace = var.argocd_namespace
     }
 
