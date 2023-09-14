@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v2.0.1...v2.1.0) (2023-09-14)
+
+
+### Features
+
+* add way to define destination cluster through name or address ([e1c5827](https://github.com/camptocamp/devops-stack-module-applicationset/commit/e1c5827567587f599bdbd124bc2f484feae52578))
+
 ## [2.0.1](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v2.0.0...v2.0.1) (2023-08-09)
 
 
