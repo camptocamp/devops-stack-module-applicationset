@@ -45,10 +45,11 @@ resource "argocd_project" "this" {
 
     # The destination block below is needed in order to allow the ApplicationSet below to be created in the namespace
     # `argocd` while belonging to this project. This block is only needed if the user provides a namespace above
-    # instead of the wildcard "*" configured by default.
+    # instead of the wildcard "*" configured by default AND/OR if the destination cluster of the applications is 
+    # different from where the ApplicationSet will reside.
     destination {
-      name      = var.project_dest_cluster_address == null ? var.project_dest_cluster_name : null
-      server    = var.project_dest_cluster_address == null ? null : var.project_dest_cluster_address
+      name      = var.project_appset_dest_cluster_address == null ? var.project_appset_dest_cluster_name : null
+      server    = var.project_appset_dest_cluster_address == null ? null : var.project_appset_dest_cluster_address
       namespace = var.argocd_namespace
     }
 
@@ -104,8 +105,8 @@ resource "argocd_application" "this" {
     }
 
     destination {
-      name      = var.project_dest_cluster_address == null ? var.project_dest_cluster_name : null
-      server    = var.project_dest_cluster_address == null ? null : var.project_dest_cluster_address
+      name      = var.project_appset_dest_cluster_address == null ? var.project_appset_dest_cluster_name : null
+      server    = var.project_appset_dest_cluster_address == null ? null : var.project_appset_dest_cluster_address
       namespace = var.argocd_namespace
     }
 
