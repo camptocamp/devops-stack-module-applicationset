@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v2.1.0...v2.1.1) (2023-10-19)
+
+
+### Bug Fixes
+
+* add new variable to specifically set the AppSet destination ([#32](https://github.com/camptocamp/devops-stack-module-applicationset/issues/32)) ([ca0be76](https://github.com/camptocamp/devops-stack-module-applicationset/commit/ca0be76ba589173322d5cf8374f795ba2efe1206))
+
 ## [2.1.0](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v2.0.1...v2.1.0) (2023-09-14)
 
 
