@@ -284,7 +284,7 @@ Description: Override of target revision of the application chart.
 
 Type: `string`
 
-Default: `"v2.0.1"`
+Default: `"v2.1.0"`
 
 ==== [[input_app_autosync]] <<input_app_autosync,app_autosync>>
 
@@ -317,6 +317,22 @@ Description: IDs of the other modules on which this module depends on.
 Type: `map(string)`
 
 Default: `{}`
+
+==== [[input_project_appset_dest_cluster_name]] <<input_project_appset_dest_cluster_name,project_appset_dest_cluster_name>>
+
+Description: Allowed destination cluster *name* in the AppProject. *This is the cluster where the ApplicationSets will reside and could be different than the destination cluster of the ApplicationSet template.*
+
+Type: `string`
+
+Default: `"in-cluster"`
+
+==== [[input_project_appset_dest_cluster_address]] <<input_project_appset_dest_cluster_address,project_appset_dest_cluster_address>>
+
+Description: Allowed destination cluster *address* in the AppProject. *This is the cluster where the ApplicationSets will reside and could be different than the destination cluster of the ApplicationSet template.* If you define this variable, any value passed in the `project_appset_dest_cluster_name` variable is ignored.
+
+Type: `string`
+
+Default: `null`
 
 ==== [[input_project_dest_cluster_name]] <<input_project_dest_cluster_name,project_dest_cluster_name>>
 
@@ -435,7 +451,7 @@ Description: ID to pass other modules in order to refer to this module as a depe
 |[[input_target_revision]] <<input_target_revision,target_revision>>
 |Override of target revision of the application chart.
 |`string`
-|`"v2.0.1"`
+|`"v2.1.0"`
 |no
 
 |[[input_app_autosync]] <<input_app_autosync,app_autosync>>
@@ -487,6 +503,18 @@ object({
 |`any`
 |n/a
 |yes
+
+|[[input_project_appset_dest_cluster_name]] <<input_project_appset_dest_cluster_name,project_appset_dest_cluster_name>>
+|Allowed destination cluster *name* in the AppProject. *This is the cluster where the ApplicationSets will reside and could be different than the destination cluster of the ApplicationSet template.*
+|`string`
+|`"in-cluster"`
+|no
+
+|[[input_project_appset_dest_cluster_address]] <<input_project_appset_dest_cluster_address,project_appset_dest_cluster_address>>
+|Allowed destination cluster *address* in the AppProject. *This is the cluster where the ApplicationSets will reside and could be different than the destination cluster of the ApplicationSet template.* If you define this variable, any value passed in the `project_appset_dest_cluster_name` variable is ignored.
+|`string`
+|`null`
+|no
 
 |[[input_project_dest_cluster_name]] <<input_project_dest_cluster_name,project_dest_cluster_name>>
 |Allowed destination cluster *name* in the AppProject. *Must be the same as the the one configured in the ApplicationSet template.*

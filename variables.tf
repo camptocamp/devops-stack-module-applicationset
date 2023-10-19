@@ -53,6 +53,18 @@ variable "template" {
   type        = any
 }
 
+variable "project_appset_dest_cluster_name" {
+  description = "Allowed destination cluster *name* in the AppProject. *This is the cluster where the ApplicationSets will reside and could be different than the destination cluster of the ApplicationSet template.*"
+  type        = string
+  default     = "in-cluster"
+}
+
+variable "project_appset_dest_cluster_address" {
+  description = "Allowed destination cluster *address* in the AppProject. *This is the cluster where the ApplicationSets will reside and could be different than the destination cluster of the ApplicationSet template.* If you define this variable, any value passed in the `project_appset_dest_cluster_name` variable is ignored."
+  type        = string
+  default     = null
+}
+
 variable "project_dest_cluster_name" {
   description = "Allowed destination cluster *name* in the AppProject. *Must be the same as the the one configured in the ApplicationSet template.*"
   type        = string
