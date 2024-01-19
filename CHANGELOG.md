@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v2.1.1...v3.0.0) (2024-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove the Argo CD namespace variable ([#34](https://github.com/camptocamp/devops-stack-module-applicationset/issues/34))
+
+### Bug Fixes
+
+* remove the Argo CD namespace variable ([#34](https://github.com/camptocamp/devops-stack-module-applicationset/issues/34)) ([0b86204](https://github.com/camptocamp/devops-stack-module-applicationset/commit/0b86204da1d820b3ddbc3c09bbdfd8cf04d6bf9a))
+
 ## [2.1.1](https://github.com/camptocamp/devops-stack-module-applicationset/compare/v2.1.0...v2.1.1) (2023-10-19)
 
 
