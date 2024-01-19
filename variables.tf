@@ -5,7 +5,7 @@
 variable "target_revision" {
   description = "Override of target revision of the application chart."
   type        = string
-  default     = "v2.1.1" # x-release-please-version
+  default     = "v3.0.0" # x-release-please-version
 }
 
 variable "app_autosync" {
