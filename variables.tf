@@ -2,12 +2,6 @@
 ## Standard variables
 #######################
 
-variable "argocd_namespace" {
-  description = "Namespace used by Argo CD where the Application and AppProject resources should be created."
-  type        = string
-  default     = "argocd"
-}
-
 variable "target_revision" {
   description = "Override of target revision of the application chart."
   type        = string

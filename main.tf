@@ -22,7 +22,7 @@ resource "argocd_repository" "private_ssh_repo" {
 resource "argocd_project" "this" {
   metadata {
     name      = var.name
-    namespace = var.argocd_namespace
+    namespace = "argocd"
   }
 
   spec {
@@ -50,7 +50,7 @@ resource "argocd_project" "this" {
     destination {
       name      = var.project_appset_dest_cluster_address == null ? var.project_appset_dest_cluster_name : null
       server    = var.project_appset_dest_cluster_address == null ? null : var.project_appset_dest_cluster_address
-      namespace = var.argocd_namespace
+      namespace = "argocd"
     }
 
     orphaned_resources {
@@ -67,7 +67,7 @@ resource "argocd_project" "this" {
 resource "argocd_application" "this" {
   metadata {
     name      = var.name
-    namespace = var.argocd_namespace
+    namespace = "argocd"
   }
 
   timeouts {
@@ -107,7 +107,7 @@ resource "argocd_application" "this" {
     destination {
       name      = var.project_appset_dest_cluster_address == null ? var.project_appset_dest_cluster_name : null
       server    = var.project_appset_dest_cluster_address == null ? null : var.project_appset_dest_cluster_address
-      namespace = var.argocd_namespace
+      namespace = "argocd"
     }
 
     sync_policy {
