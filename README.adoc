@@ -11,7 +11,9 @@ You can instantiate this module using the example below:
 module "helloworld_apps" {
   source = "git::https://github.com/camptocamp/devops-stack-module-applicationset.git?ref=<RELEASE>"
 
-  depends_on = [module.argocd]
+  dependency_ids = {
+    argocd = module.argocd.id
+  }
 
   name                   = "helloworld-apps"
   argocd_namespace       = local.argocd_namespace
@@ -84,30 +86,32 @@ Then, it creates an Application called `helloworld-apps` that itself only contai
 
 image::https://raw.githubusercontent.com/camptocamp/devops-stack-module-applicationset/main/docs/modules/ROOT/assets/images/argocd_appset.png[link=https://raw.githubusercontent.com/camptocamp/devops-stack-module-applicationset/main/docs/modules/ROOT/assets/images/argocd_appset.png,window=_blank]
 
-It is this ApplicationSet that will contain all the applications you have in the repository you defined in `repoURL`, in this example is `helloworld`.
+It is this ApplicationSet that will contain all the applications you have in the repository defined in `repoURL` (in this example, `helloworld`).
 
 image::https://raw.githubusercontent.com/camptocamp/devops-stack-module-applicationset/main/docs/modules/ROOT/assets/images/argocd_app.png[link=https://raw.githubusercontent.com/camptocamp/devops-stack-module-applicationset/main/docs/modules/ROOT/assets/images/argocd_app.png,window=_blank]
 
-As you can see, the ApplicationSet template we give here is flexible enough that it can be configured as you like. For example, since we defined the path in the generator as a wildcard `apps/*`, we can also take this value to then name each application created depending on name of the folder where the chart is located.
+As you can see, the ApplicationSet template provided here is flexible enough that it can be configured as you like. For example, since we defined the path in the generator as a wildcard `apps/*`, we can also take this value to then name each application created depending on name of the folder where the chart is located.
 
 === Using a private repository
 
 When your charts are stored inside a private repository, Argo CD needs to have the credentials necessary to have at least read access to the contents of the repository.
 
-This module has 2 variables you can use for that, depending on the type of credentials you want to configure, either HTTPS or SSH.
+This module has 2 variables you can use for that, depending on the type of connection you want to use (HTTPS or SSH).
 
 ==== SSH
 
 You'll need to pass a string containing a private SSH key in the variable `source_credentials_ssh_key` (you can pass the value however you want, as long as it is a string) and the repository needs to be of the type `git@address.com:owner/repository`.
 
-IMPORTANT: Do not hardcode your SSH private key as the example below! Either create the SSH key using Terraform and pass the output directly or use SOPS to store and pass the key as a secret. 
+IMPORTANT: Do not hardcode your SSH private key like in the example below! Either create the SSH key using Terraform and pass the output directly or get the key from a secret store. 
 
 [source,terraform]
 ----
 module "helloworld_apps" {
   source = "git::https://github.com/camptocamp/devops-stack-module-applicationset.git?ref=<RELEASE>"
 
-  depends_on = [module.argocd]
+  dependency_ids = {
+    argocd = module.argocd.id
+  }
 
   name                   = "helloworld-apps"
   argocd_namespace       = local.argocd_namespace
@@ -151,16 +155,18 @@ module "helloworld_apps" {
 
 ==== HTTPS
 
-You'll need to pass the username and password inside the variable `source_credentials_https` and the repository needs to be of the type `https://address.com/owner/repository`.
+You'll need to pass the username and password inside the variable `source_credentials_https` and the repository URL needs to be of the type `https://address.com/owner/repository`.
 
-IMPORTANT: Do not hardcode your password the example below! It is recommended to pass the value as secret, either using SOPS or another provider. Another best practice would be to use a token you created on Github.com (or another provider) that has the least amount of access needed (in these use-case, Argo CD only needs read access).
+IMPORTANT: Do not hardcode your password like in the example below! It is recommended to pass the value as secret, either using SoPS or another provider. Another best practice would be to use a token you created on GitHub.com (or another Git provider) that has the least amount of access possible (in these use-cases, Argo CD only needs *read access*).
 
 [source,terraform]
 ----
 module "helloworld_apps" {
   source = "git::https://github.com/camptocamp/devops-stack-module-applicationset.git?ref=<RELEASE>"
 
-  depends_on = [module.argocd]
+  dependency_ids = {
+    argocd = module.argocd.id
+  }
 
   name                   = "helloworld-apps"
   argocd_namespace       = local.argocd_namespace
@@ -210,7 +216,7 @@ module "helloworld_apps" {
 
 === Dependencies
 
-==== `module.argocd`
+==== `module.argocd.id`
 
 As this is an application, it needs to be deployed after the deployment of Argo CD and consequently this module needs to have this explicit dependency.
 
