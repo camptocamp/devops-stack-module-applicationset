@@ -235,9 +235,9 @@ The following requirements are needed by this module:
 
 The following providers are used by this module:
 
-- [[provider_null]] <<provider_null,null>> (>= 3)
-
 - [[provider_argocd]] <<provider_argocd,argocd>> (>= 6)
+
+- [[provider_null]] <<provider_null,null>> (>= 3)
 
 === Resources
 
@@ -282,7 +282,7 @@ Description: Override of target revision of the application chart.
 
 Type: `string`
 
-Default: `"v3.0.0"`
+Default: `"v4.0.0"`
 
 ==== [[input_app_autosync]] <<input_app_autosync,app_autosync>>
 
@@ -443,7 +443,7 @@ Description: ID to pass other modules in order to refer to this module as a depe
 |[[input_target_revision]] <<input_target_revision,target_revision>>
 |Override of target revision of the application chart.
 |`string`
-|`"v3.0.0"`
+|`"v4.0.0"`
 |no
 
 |[[input_app_autosync]] <<input_app_autosync,app_autosync>>
